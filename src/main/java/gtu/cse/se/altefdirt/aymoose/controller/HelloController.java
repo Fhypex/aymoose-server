@@ -9,6 +9,6 @@ public class HelloController {
     
     @GetMapping("")
     public String hello() {
-        return "Hello, new user has been created! Daha da güzellesti, The better the newer. V3";
+        return "Hello, new user has been created! Daha da güzellesti, The better the newer. V4";
     }
 }
