@@ -11,16 +11,25 @@ pipeline {
         stage('Build') {
             steps {
                 // Example build step
-                echo "Building the project..."
-                // Add your build commands here, e.g., `mvn clean install`
+                script {
+                    // Run the Gradle build
+                    def result = sh(script: './gradlew clean build', returnStatus: true)
+                    if (result != 0) {
+                        error "Build failed!"
+                    }
+                }
             }
         }
         
         stage('Test') {
             steps {
-                // Example test step
-                echo "Running tests..."
-                // Add your test commands here, e.g., `mvn test`
+                script {
+                    // Run tests
+                    def result = sh(script: './gradlew test', returnStatus: true)
+                    if (result != 0) {
+                        error "Tests failed!"
+                    }
+                }
             }
         }
         
