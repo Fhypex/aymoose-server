@@ -13,7 +13,7 @@ pipeline {
                 // Example build step
                 script {
                     // Run the Gradle build
-                    def result = sh(script: './gradlew clean build', returnStatus: true)
+                    def result = sh(script: 'sudo ./gradlew clean build', returnStatus: true)
                     if (result != 0) {
                         error "Build failed!"
                     }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run tests
-                    def result = sh(script: './gradlew test', returnStatus: true)
+                    def result = sh(script: 'sudo ./gradlew test', returnStatus: true)
                     if (result != 0) {
                         error "Tests failed!"
                     }
