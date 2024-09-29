@@ -11,16 +11,29 @@ pipeline {
         stage('Build') {
             steps {
                 // Example build step
-                echo "Building the project..."
-                // Add your build commands here, e.g., `mvn clean install`
+                script {
+                    // Run the Gradle build
+                    def wrapper = sh(script: 'gradle wrapper', returnStatus: true)
+                    if (wrapper != 0) {
+                        error "Could not create gradle wrapper"
+                    }
+                    def result = sh(script: 'sudo ./gradlew clean build', returnStatus: true)
+                    if (result != 0) {
+                        error "Error while building with gradle"
+                    }
+                }
             }
         }
         
         stage('Test') {
             steps {
-                // Example test step
-                echo "Running tests..."
-                // Add your test commands here, e.g., `mvn test`
+                script {
+                    // Run tests
+                    def result = sh(script: 'sudo ./gradlew test', returnStatus: true)
+                    if (result != 0) {
+                        error "Tests failed!"
+                    }
+                }
             }
         }
         
