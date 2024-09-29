@@ -14,12 +14,12 @@ pipeline {
                 script {
                     // Run the Gradle build
                     def wrapper = sh(script: 'gradle wrapper', returnStatus: true)
-                    if (result != 0) {
-                        error "Build failed!"
+                    if (wrapper != 0) {
+                        error "Could not create gradle wrapper"
                     }
                     def result = sh(script: 'sudo ./gradlew clean build', returnStatus: true)
                     if (result != 0) {
-                        error "Build failed!"
+                        error "Error while building with gradle"
                     }
                 }
             }
