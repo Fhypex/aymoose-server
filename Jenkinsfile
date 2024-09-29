@@ -13,6 +13,10 @@ pipeline {
                 // Example build step
                 script {
                     // Run the Gradle build
+                    def wrapper = sh(script: 'sudo gradle wrapper', returnStatus: true)
+                    if (result != 0) {
+                        error "Build failed!"
+                    }
                     def result = sh(script: 'sudo ./gradlew clean build', returnStatus: true)
                     if (result != 0) {
                         error "Build failed!"
