@@ -17,7 +17,7 @@ pipeline {
                     if (wrapper != 0) {
                         error "Could not create gradle wrapper"
                     }
-                    def result = sh(script: 'sudo ./gradlew clean build', returnStatus: true)
+                    def result = sh(script: './gradlew clean build', returnStatus: true)
                     if (result != 0) {
                         error "Error while building with gradle"
                     }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Run tests
-                    def result = sh(script: 'sudo ./gradlew test', returnStatus: true)
+                    def result = sh(script: '/gradlew test', returnStatus: true)
                     if (result != 0) {
                         error "Tests failed!"
                     }
