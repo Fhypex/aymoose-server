@@ -1,0 +1,23 @@
+
+description = 'Review'
+jar.archiveBaseName.set('review')
+
+dependencies {
+   /*  implementation project(':core') */
+}
+
+test {
+    useJUnitPlatform()
+
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
+
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: ${descriptor}")
+    }
+}

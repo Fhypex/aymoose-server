@@ -1,0 +1,22 @@
+
+description = 'Shared'
+jar.archiveBaseName.set('shared')
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
+
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: ${descriptor}")
+    }
+}
