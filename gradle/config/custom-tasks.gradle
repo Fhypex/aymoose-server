@@ -1,5 +1,5 @@
 task plantUml(type:Exec) {
   workingDir './docs'
 
-  commandLine 'plantuml', "$rootProject.projectDir/docs/uml/wallet_service.puml"
-}
+/*   commandLine 'plantuml', "$rootProject.projectDir/docs/uml/wallet_service.puml"
+ */}
