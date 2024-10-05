@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+project.ext.type = 'java'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

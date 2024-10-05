@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Run tests
-                    def result = sh(script: '/gradlew test', returnStatus: true)
+                    def result = sh(script: './gradlew test', returnStatus: true)
                     if (result != 0) {
                         error "Tests failed!"
                     }

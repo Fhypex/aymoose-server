@@ -1,0 +1,13 @@
+def version = [
+        dependencyManagement: '1.1.6',
+        springboot          : '3.3.2',
+        versions            : '0.51.0',
+        sonarqube           : '5.0.0.4638'
+]
+
+dependencies {
+    classpath group: 'io.spring.gradle', name: 'dependency-management-plugin', version: version.dependencyManagement
+    classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: version.springboot
+    classpath group: 'com.github.ben-manes', name: 'gradle-versions-plugin', version: version.versions
+    classpath group: 'org.sonarsource.scanner.gradle', name: 'sonarqube-gradle-plugin', version: version.sonarqube
+}

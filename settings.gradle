@@ -1,1 +1,13 @@
-rootProject.name = 'aymoose'
+rootProject.name = 'aymoose-server'
+
+include ':core'
+include ':shared'
+include ':review'
+
+
+
+
+
+/* include ':user'
+include ':user:domain'
+include ':user:infra' */

@@ -1,0 +1,15 @@
+description = 'Core'
+jar.archiveBaseName.set('aymoose-core')
+
+
+/* tasks.named('test', Test) {
+    useJUnitPlatform()
+
+    maxHeapSize = '1G'
+
+    testLogging {
+        events "passed"
+    }
+}
+ */
+
