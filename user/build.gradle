@@ -1,6 +1,6 @@
 
-description = 'Review'
-jar.archiveBaseName.set('review')
+description = 'User'
+jar.archiveBaseName.set('user')
 
 dependencies {
     implementation project('api')
