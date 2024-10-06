@@ -1,13 +1,10 @@
 rootProject.name = 'aymoose-server'
 
-include ':core'
 include ':shared'
+
+include ':core'
+
 include ':review'
+include ':review:internal'
+include ':review:api'
 
-
-
-
-
-/* include ':user'
-include ':user:domain'
-include ':user:infra' */
