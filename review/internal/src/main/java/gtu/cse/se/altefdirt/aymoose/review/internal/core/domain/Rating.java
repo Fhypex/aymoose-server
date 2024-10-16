@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.internal.domain.rating;
+package gtu.cse.se.altefdirt.aymoose.review.internal.core.domain;
 
 import gtu.cse.se.altefdirt.aymoose.shared.domain.SingleValueObject;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.annotation.ValueObject;

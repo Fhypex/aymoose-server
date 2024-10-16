@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
 
-import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.ReviewEntity;
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.SortByAggregateId;
+import gtu.cse.se.altefdirt.aymoose.review.internal.shared.jpa.ReviewEntity;
 import gtu.cse.se.altefdirt.aymoose.shared.readmodel.QueryImpl;
 import lombok.RequiredArgsConstructor;
 

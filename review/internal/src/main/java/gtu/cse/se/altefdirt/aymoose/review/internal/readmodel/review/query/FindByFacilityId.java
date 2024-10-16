@@ -7,9 +7,7 @@ import gtu.cse.se.altefdirt.aymoose.shared.readmodel.Query;
 import java.util.List;
 
 @Query
-public interface SortByCreatedAt {
+public interface FindByFacilityId {
 
-    List<ReviewEntity> queryAscending();
-
-    List<ReviewEntity> queryDescending();
+    List<ReviewEntity> query(String facilityId);
 }

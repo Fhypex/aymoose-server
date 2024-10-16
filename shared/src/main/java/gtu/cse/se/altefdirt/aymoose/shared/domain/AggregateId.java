@@ -16,7 +16,7 @@ public record AggregateId(
         return new AggregateId(value.toString());
     }
 
-    public static AggregateId of(String value) {
+    public static AggregateId from(String value) {
         return new AggregateId(UUID.fromString(value).toString());
     }
 

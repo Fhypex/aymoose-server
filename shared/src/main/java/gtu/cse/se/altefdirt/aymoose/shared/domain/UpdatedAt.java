@@ -1,8 +1,7 @@
-package gtu.cse.se.altefdirt.aymoose.review.internal.domain.updatedat;
+package gtu.cse.se.altefdirt.aymoose.shared.domain;
 
 import java.time.Instant;
 
-import gtu.cse.se.altefdirt.aymoose.shared.domain.SingleValueObject;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.annotation.ValueObject;
 import jakarta.validation.constraints.NotNull;
 

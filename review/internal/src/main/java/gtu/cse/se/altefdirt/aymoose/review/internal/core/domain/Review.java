@@ -1,12 +1,9 @@
-package gtu.cse.se.altefdirt.aymoose.review.internal.domain;
+package gtu.cse.se.altefdirt.aymoose.review.internal.core.domain;
 
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.author.Author;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.comment.Comment;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.createdat.CreatedAt;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.rating.Rating;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.updatedat.UpdatedAt;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.AggregateId;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.BaseAggregateRoot;
+import gtu.cse.se.altefdirt.aymoose.shared.domain.CreatedAt;
+import gtu.cse.se.altefdirt.aymoose.shared.domain.UpdatedAt;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.annotation.AggregateRoot;
 import lombok.Getter;
 

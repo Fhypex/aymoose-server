@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review;
+package gtu.cse.se.altefdirt.aymoose.review.internal.shared.jpa;
 
 import java.time.Instant;
 
@@ -19,13 +19,13 @@ import lombok.Setter;
 public class ReviewEntity {
     
     @Id
-    private String aggregateId;
+    private String id;
     private String userId;
     private String facilityId;
     private String author;
-    private short reviewRating;
-    private String reviewTitle;
-    private String reviewContent;
+    private short rating;
+    private String title;
+    private String content;
     private Instant createdAt;
     private Instant updatedAt;
 }

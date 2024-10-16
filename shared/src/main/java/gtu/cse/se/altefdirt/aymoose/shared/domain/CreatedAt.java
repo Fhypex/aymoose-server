@@ -1,14 +1,13 @@
-package gtu.cse.se.altefdirt.aymoose.review.internal.domain.createdat;
+package gtu.cse.se.altefdirt.aymoose.shared.domain;
 
 import java.time.Instant;
 
-import gtu.cse.se.altefdirt.aymoose.shared.domain.SingleValueObject;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.annotation.ValueObject;
 import jakarta.validation.constraints.NotNull;
 
 @ValueObject
 public record CreatedAt(
-    @NotNull Instant creationTime) implements SingleValueObject<Instant> {   
+    @NotNull Instant createdAt) implements SingleValueObject<Instant> {   
         
     public static CreatedAt now() {
         return new CreatedAt(Instant.now());
@@ -16,6 +15,6 @@ public record CreatedAt(
 
     @Override
     public Instant value() {
-        return creationTime;
+        return createdAt;
     }
 }
