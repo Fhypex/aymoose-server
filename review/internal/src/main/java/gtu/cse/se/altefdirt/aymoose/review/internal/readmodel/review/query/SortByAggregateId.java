@@ -4,11 +4,13 @@ import gtu.cse.se.altefdirt.aymoose.shared.domain.AggregateId;
 import gtu.cse.se.altefdirt.aymoose.shared.readmodel.Query;
 
 import java.util.List;
-import java.util.Optional;
-import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.Review;
+
+import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.ReviewEntity;
 
 @Query
-public interface ByAggregateId {
+public interface SortByAggregateId {
 
-    public Optional<Review> query(AggregateId aggregateId);
+    List<ReviewEntity> queryAscending();
+
+    List<ReviewEntity> queryDescending();
 }

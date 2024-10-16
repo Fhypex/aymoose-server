@@ -6,22 +6,22 @@ import java.util.UUID;
 import jakarta.validation.constraints.NotNull;
 
 public record AggregateId(
-    @NotNull UUID id) implements SingleValueObject<UUID>, Serializable { 
+    @NotNull String id) implements SingleValueObject<String>, Serializable { 
     
     public static AggregateId generate() {
-        return new AggregateId(UUID.randomUUID());
+        return new AggregateId(UUID.randomUUID().toString());
     }
 
     public static AggregateId of(UUID value) {
-        return new AggregateId(value);
+        return new AggregateId(value.toString());
     }
 
     public static AggregateId of(String value) {
-        return new AggregateId(UUID.fromString(value));
+        return new AggregateId(UUID.fromString(value).toString());
     }
 
     @Override
-    public UUID value() {
+    public String value() {
         return id;
     }
 }

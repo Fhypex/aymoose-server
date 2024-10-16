@@ -2,7 +2,6 @@ dependencies {
 
     implementation project(':shared')
     implementation project(':core')
-    implementation project(':review')
     implementation project(':review:internal')
     implementation project(':review:api')
 }

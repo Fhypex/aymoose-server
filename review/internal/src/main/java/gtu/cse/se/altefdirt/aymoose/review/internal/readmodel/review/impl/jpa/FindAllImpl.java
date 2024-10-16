@@ -4,18 +4,19 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.Review;
-import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.All;
+import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.ReviewEntity;
+import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindAll;
+import gtu.cse.se.altefdirt.aymoose.shared.readmodel.QueryImpl;
 import lombok.RequiredArgsConstructor;
 
-@Repository
+@QueryImpl
 @RequiredArgsConstructor
-class AllImpl implements All {
+class FindAllImpl implements FindAll {
 
     private final ReviewRepository reviewRepository;
 
     @Override
-    public List<Review> query() {
+    public List<ReviewEntity> query() {
         return reviewRepository.findAll();
     }
     
