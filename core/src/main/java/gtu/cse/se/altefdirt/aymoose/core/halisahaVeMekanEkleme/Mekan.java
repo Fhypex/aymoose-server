@@ -7,10 +7,14 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Mekan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +28,14 @@ public class Mekan {
 
     @NotNull
     private String iletisimBilgileri;
+
+    @NotNull
+    private String mekanAdi;
+
+    @NotNull
+    private String telefonNumarasi;
+
+    private String tesisAciklamasi;
+
+    private int sahaSayisi;
 }

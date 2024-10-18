@@ -9,7 +9,11 @@ public class MekanMapper {
             mekan.getId(),
             mekan.getKullaniciId(),
             mekan.getKonum(),
-            mekan.getIletisimBilgileri()
+            mekan.getIletisimBilgileri(),
+            mekan.getMekanAdi(),
+            mekan.getTelefonNumarasi(),
+            mekan.getTesisAciklamasi(),
+            mekan.getSahaSayisi()
         );
     }
 
@@ -19,6 +23,11 @@ public class MekanMapper {
         mekan.setKullaniciId(dto.kullaniciId());
         mekan.setKonum(dto.konum());
         mekan.setIletisimBilgileri(dto.iletisimBilgileri());
+        mekan.setMekanAdi(dto.mekanAdi());
+        mekan.setTelefonNumarasi(dto.telefonNumarasi());
+        mekan.setTesisAciklamasi(dto.tesisAciklamasi());
+        mekan.setSahaSayisi(dto.sahaSayisi());
         return mekan;
     }
 }
+
