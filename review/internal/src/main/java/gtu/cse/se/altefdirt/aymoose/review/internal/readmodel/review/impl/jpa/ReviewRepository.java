@@ -21,4 +21,7 @@ interface ReviewRepository extends JpaRepository<ReviewEntity, String> {
 
     @Query("SELECT r FROM ReviewEntity r WHERE r.userId = ?1 AND r.facilityId = ?2 AND r.rating >= ?3")
     List<ReviewEntity> findByUserIdAndFacilityIdAndRatingGreaterThan(String userId, String facilityId, short rating);
+
+    @Query("SELECT r FROM ReviewEntity r WHERE r.userId = ?1 AND r.facilityId = ?2 AND r.rating = ?3")
+    List<ReviewEntity> findByUserIdAndFacilityIdAndRatingEqual(String userId, String facilityId, short rating);
 }

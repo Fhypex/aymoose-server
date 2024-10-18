@@ -16,6 +16,7 @@ import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindB
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByFacilityId;
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByUserId;
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByUserIdAndFacilityId;
+import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByUserIdAndFacilityIdAndRatingEqual;
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByUserIdAndFacilityIdAndRatingGreater;
 import gtu.cse.se.altefdirt.aymoose.review.internal.readmodel.review.query.FindByUserIdAndFacilityIdAndRatingLesser;
 import gtu.cse.se.altefdirt.aymoose.review.api.rest.dto.ReviewResponseDTO;
@@ -25,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @ApiVersionV1
 @RequiredArgsConstructor
-class ReviewV1View {
+class ReviewQueryV1Controller {
 
     private final FindAll findAll;
     private final FindById findByAggregateId;
@@ -34,6 +35,7 @@ class ReviewV1View {
     private final FindByUserIdAndFacilityId findByUserIdAndFacilityId;
     private final FindByUserIdAndFacilityIdAndRatingGreater findByUserIdAndFacilityIdAndRatingGreater;
     private final FindByUserIdAndFacilityIdAndRatingLesser findByUserIdAndFacilityIdAndRatingLesser;
+    private final FindByUserIdAndFacilityIdAndRatingEqual findByUserIdAndFacilityIdAndRatingEqual;
 
 
     private static final class Parameter {
@@ -50,36 +52,31 @@ class ReviewV1View {
 
     @GetMapping(value = "/review/{id}")
     List<ReviewResponseDTO> getReviewById(@PathVariable(Parameter.ID) String id) {
-        return findByAggregateId.query(id).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
+        return findByAggregateId.query(id).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping(value = "/reviews", params = Parameter.USER)
     List<ReviewResponseDTO> getReviewsByUser(@RequestParam(Parameter.USER) String userId) {
-        return findByUserId.query(userId).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
+        return findByUserId.query(userId).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping(value = "/reviews", params = Parameter.FACILITY)
     List<ReviewResponseDTO> getReviewsByFacility(@RequestParam(Parameter.FACILITY) String facilityId) {
-        return findByFacilityId.query(facilityId).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
+        return findByFacilityId.query(facilityId).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping(value = "/reviews", params = {Parameter.USER, Parameter.FACILITY})
     List<ReviewResponseDTO> getReviewsByUserAndFacility(@RequestParam(Parameter.USER) String userId, @RequestParam(Parameter.FACILITY) String facilityId) {
-        return findByUserIdAndFacilityId.query(userId, facilityId).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
+        return findByUserIdAndFacilityId.query(userId, facilityId).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping(value = "/reviews", params = {Parameter.USER, Parameter.FACILITY, Parameter.RATING})
     List<ReviewResponseDTO> getReviewsByUserAndFacilityAndRatingGreater(@RequestParam(Parameter.USER) String userId, @RequestParam(Parameter.FACILITY) String facilityId, @RequestParam(Parameter.RATING) String rating) {
-        return findByUserIdAndFacilityIdAndRatingGreater.query(userId, facilityId, rating).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
+        return findByUserIdAndFacilityIdAndRatingGreater.query(userId, facilityId, rating).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 
-    /* @GetMapping(value = "/reviews", params = {Parameter.USER, Parameter.FACILITY, Parameter.RATING})
-    List<ReviewResponseDTO> getReviewsByUserAndFacilityAndRatingLesser(@RequestParam(Parameter.USER) String userId, @RequestParam(Parameter.FACILITY) String facilityId, @RequestParam(Parameter.RATING) String rating) {
-        return findByUserIdAndFacilityIdAndRatingLesser.query(userId, facilityId, rating).stream().map(review -> ReviewResponseDTO.fromEntity(review)).collect(Collectors.toUnmodifiableList());
-    } */
-
-    @GetMapping(value = "/reviews", params = {Parameter.FACILITY, Parameter.RATING})
-    List<ReviewResponseDTO> getReviewsByFacilityAndRatingEqual(@RequestParam(Parameter.FACILITY) String facilityId, @RequestParam(Parameter.RATING) short rating) {
-        throw new NotImplementedException("Not implemented yet");
+    @GetMapping(value = "/reviews", params = {Parameter.USER, Parameter.FACILITY, Parameter.RATING})
+    List<ReviewResponseDTO> getReviewsByFacilityAndRatingEqual(@RequestParam(Parameter.USER) String userId, @RequestParam(Parameter.FACILITY) String facilityId, @RequestParam(Parameter.RATING) String rating) {
+        return findByUserIdAndFacilityIdAndRatingEqual.query(userId, facilityId, rating).stream().map(ReviewResponseDTO::fromEntity).collect(Collectors.toUnmodifiableList());
     }
 }

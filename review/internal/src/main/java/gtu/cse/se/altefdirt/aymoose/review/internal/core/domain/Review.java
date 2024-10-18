@@ -12,43 +12,48 @@ import lombok.Getter;
 public final class Review extends BaseAggregateRoot{
 
     private AggregateId userId;
+    private AggregateId reservationId;
     private AggregateId facilityId;
-    private Author author;
     private Rating rating;
     private Comment comment;
     private CreatedAt createdAt;
     private UpdatedAt updatedAt;
-    private boolean isPublished;
-    private boolean isDeleted;
+    private boolean isNeedsModeration;
+    private boolean isDisabled;
     
     public Review(AggregateId aggregateId, 
-                  Author author, 
+                  AggregateId reservationId,
+                  AggregateId userId,
+                  AggregateId facilityId,
                   Comment comment, 
                   Rating rating, 
                   CreatedAt createdAt,
                   UpdatedAt updatedAt,
-                  boolean isPublished, 
-                  boolean isDeleted) {
+                  boolean isNeedsModeration,
+                  boolean isDisabled) {
         super(aggregateId);
-        this.author = author;
+        this.reservationId = reservationId;
+        this.userId = userId;
+        this.facilityId = facilityId;
         this.comment = comment;
         this.rating = rating;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.isPublished = isPublished;
-        this.isDeleted = isDeleted;
+        this.isNeedsModeration = isNeedsModeration;
+        this.isDisabled = isDisabled;
+
     }
 
-    public void markAsPublished() {
-        this.isPublished = true;
+    public void disable() {
+        this.isDisabled = true;
     }
 
-    public void markAsDeleted() {
-        this.isDeleted = true;
+    public void enable() {
+        this.isDisabled = false;
     }
 
-    public Author author() {
-        return author;
+    public void markAsNeedsModeration() {
+        this.isNeedsModeration = true;
     }
 
     public Comment comment() {
@@ -65,13 +70,5 @@ public final class Review extends BaseAggregateRoot{
 
     public UpdatedAt updatedAt() {
         return this.updatedAt;
-    }
-
-    public boolean isPublished() {
-        return isPublished;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
     }
 }

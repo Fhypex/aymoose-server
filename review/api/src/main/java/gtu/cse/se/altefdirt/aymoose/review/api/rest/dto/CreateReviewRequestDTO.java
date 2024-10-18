@@ -21,11 +21,19 @@ import jakarta.validation.constraints.Size;
  * @param rating The rating associated with the review. Must be a short value 
  *               between 1 and 5 inclusive.
  */
-public record AddReviewRequestDTO(
+public record CreateReviewRequestDTO(
     
-    @NotBlank(message = "Review cannot be blank")
-    @Size(min = 3, max = 20, message = "Review must be between 3 and 20 characters")
-    String review, 
+    @NotBlank(message = "Reservation ID cannot be blank")
+    @Size(min = 36, max = 36, message = "Invalid reservation ID")
+    String reservationId,
+
+    @NotBlank(message = "Review title cannot be blank")
+    @Size(min = 3, max = 80, message = "Review title must be between 3 and 20 characters")
+    String title, 
+
+    @NotBlank(message = "Review content cannot be blank")
+    @Size(min = 3, max = 200, message = "Review content must be between 3 and 200 characters")
+    String content,
     
     @Size(min = 1, max = 5, message = "Rating must be between 1 and 5")
     short rating
