@@ -46,9 +46,7 @@ public class HalisahaService {
                 existingHalisaha.setMekanId(halisahaDTO.mekanId());
                 existingHalisaha.setOlculer(halisahaDTO.olculer());
                 existingHalisaha.setKapasite(halisahaDTO.kapasite());
-                existingHalisaha.setAcilisSaati(halisahaDTO.acilisSaati());
-                existingHalisaha.setKapanisSaati(halisahaDTO.kapanisSaati());
-                existingHalisaha.setUcret(halisahaDTO.ucret());
+                existingHalisaha.setSaatAraliklari(halisahaDTO.saatAraliklari());
                 Halisaha updatedHalisaha = halisahaRepository.save(existingHalisaha);
                 return halisahaMapper.toDTO(updatedHalisaha);
             }).orElseThrow(() -> new RuntimeException("Halisaha not found"));
