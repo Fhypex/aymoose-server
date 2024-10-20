@@ -1,11 +1,9 @@
 package gtu.cse.se.altefdirt.aymoose.review.internal.domain;
 
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.author.Author;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.comment.Comment;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.creationtime.CreationTime;
-import gtu.cse.se.altefdirt.aymoose.review.internal.domain.rating.Rating;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.AggregateId;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.BaseAggregateRoot;
+import gtu.cse.se.altefdirt.aymoose.shared.domain.CreatedAt;
+import gtu.cse.se.altefdirt.aymoose.shared.domain.UpdatedAt;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.annotation.AggregateRoot;
 import lombok.Getter;
 
@@ -13,32 +11,69 @@ import lombok.Getter;
 @AggregateRoot
 public final class Review extends BaseAggregateRoot{
 
-    private Author author;
-    private Comment comment;
+    private AggregateId userId;
+    private AggregateId reservationId;
+    private AggregateId facilityId;
     private Rating rating;
-    private CreationTime creationTime;
-    private boolean isPublished;
-    private boolean isDeleted;
+    private Comment comment;
+    private CreatedAt createdAt;
+    private UpdatedAt updatedAt;
+    private boolean isNeedsModeration;
+    private boolean isDisabled;
     
-    public Review(AggregateId aggregateId, Author author, Comment comment, Rating rating, CreationTime creationTime, boolean isPublished, boolean isDeleted) {
+    public Review(AggregateId aggregateId, 
+                  AggregateId reservationId,
+                  AggregateId userId,
+                  AggregateId facilityId,
+                  Comment comment, 
+                  Rating rating, 
+                  CreatedAt createdAt,
+                  UpdatedAt updatedAt,
+                  boolean isNeedsModeration,
+                  boolean isDisabled) {
         super(aggregateId);
-        this.author = author;
+        this.reservationId = reservationId;
+        this.userId = userId;
+        this.facilityId = facilityId;
         this.comment = comment;
         this.rating = rating;
-        this.creationTime = CreationTime.now();
-        this.isPublished = false;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.isNeedsModeration = isNeedsModeration;
+        this.isDisabled = isDisabled;
+
     }
 
-    public void markAsPublished() {
-        this.isPublished = true;
+    public void update(Comment comment, Rating rating) {
+        this.comment = comment;
+        this.rating = rating;
+        this.updatedAt = UpdatedAt.now();
     }
 
-    public void markAsDeleted() {
-        this.isDeleted = true;
+    public void update(Comment comment) {
+        this.comment = comment;
+        this.updatedAt = UpdatedAt.now();
     }
 
-    public Author author() {
-        return author;
+    public void update(Rating rating) {
+        this.rating = rating;
+        this.updatedAt = UpdatedAt.now();
+    }
+
+    public AggregateId userId() {
+        return userId;
+    }
+
+    public void disable() {
+        this.isDisabled = true;
+    }
+
+    public void enable() {
+        this.isDisabled = false;
+    }
+
+    public void markAsNeedsModeration() {
+        this.isNeedsModeration = true;
     }
 
     public Comment comment() {
@@ -49,15 +84,11 @@ public final class Review extends BaseAggregateRoot{
         return rating;
     }
 
-    public CreationTime creationTime() {
-        return creationTime;
+    public CreatedAt createdAt() {
+        return this.createdAt;
     }
 
-    public boolean isPublished() {
-        return isPublished;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
+    public UpdatedAt updatedAt() {
+        return this.updatedAt;
     }
 }
