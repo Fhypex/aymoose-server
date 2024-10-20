@@ -40,10 +40,10 @@ dependencies {
     /* implementation "com.auth0:java-jwt:${jwtVersion}" */
     implementation "org.modelmapper:modelmapper:${modelMapperVersion}"
 
-    // Spring Modulith
 
-    implementation "org.springframework.modulith:spring-modulith-starter-core:${version_modulith}"
-    implementation "org.springframework.modulith:spring-modulith-starter-test:${version_modulith}"
+    // Spring Boot DevTools
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    // Spring Modulith
 
     //developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 
