@@ -1,0 +1,11 @@
+
+description = 'Court'
+jar.archiveBaseName.set('court')
+
+dependencies {
+    implementation project('api')
+}
+
+build {
+    dependsOn 'internal:build', 'api:build'
+}

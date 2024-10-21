@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface JpaReviewRepository extends JpaRepository<ReviewEntity, String> {
 
+    @Query("SELECT COUNT(r) FROM ReviewEntity r WHERE r.reservationId = ?1 AND r.userId = ?2")
+    int countByReservationIdAndUserId(String reservationId, String userId);
+
     List<ReviewEntity> findByUserId(String userId);
 
     List<ReviewEntity> findByFacilityId(String facilityId);
