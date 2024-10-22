@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.api.rest.controller;
+package gtu.cse.se.altefdirt.aymoose.court.api.rest.controller;
 
 /* import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

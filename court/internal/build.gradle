@@ -1,4 +1,4 @@
-jar.archiveBaseName.set('aymoose-review-internal')
+jar.archiveBaseName.set('aymoose-court-internal')
 
 dependencies {
     implementation project(':shared')

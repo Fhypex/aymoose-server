@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.api.rest.controller;
+package gtu.cse.se.altefdirt.aymoose.court.api.rest.controller;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import gtu.cse.se.altefdirt.aymoose.court.internal.application.model.CourtView;
 import gtu.cse.se.altefdirt.aymoose.court.internal.domain.Court;
 import gtu.cse.se.altefdirt.aymoose.court.internal.domain.CourtRepository;
-import gtu.cse.se.altefdirt.aymoose.review.api.rest.dto.CourtResponseDTO;
+import gtu.cse.se.altefdirt.aymoose.court.api.rest.dto.CourtResponseDTO;
 import gtu.cse.se.altefdirt.aymoose.shared.api.rest.version.ApiVersionV1;
 import gtu.cse.se.altefdirt.aymoose.shared.domain.AggregateId;
 import lombok.RequiredArgsConstructor;

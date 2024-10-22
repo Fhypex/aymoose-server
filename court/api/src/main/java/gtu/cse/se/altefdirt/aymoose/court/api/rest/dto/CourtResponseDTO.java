@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.api.rest.dto;
+package gtu.cse.se.altefdirt.aymoose.court.api.rest.dto;
 
 import gtu.cse.se.altefdirt.aymoose.court.internal.application.model.CourtView;
 import lombok.Builder;

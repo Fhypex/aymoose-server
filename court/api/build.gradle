@@ -1,4 +1,4 @@
-jar.archiveBaseName.set('aymoose-review-api')
+jar.archiveBaseName.set('aymoose-court-api')
 
 dependencies {
     implementation project(':shared')

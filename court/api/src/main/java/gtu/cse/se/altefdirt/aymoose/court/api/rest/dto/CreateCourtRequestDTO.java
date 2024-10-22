@@ -1,4 +1,4 @@
-package gtu.cse.se.altefdirt.aymoose.review.api.rest.dto;
+package gtu.cse.se.altefdirt.aymoose.court.api.rest.dto;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.validation.annotation.Validated;
