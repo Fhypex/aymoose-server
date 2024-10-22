@@ -8,3 +8,7 @@ include ':review'
 include ':review:internal'
 include ':review:api'
 
+include ':court'
+include ':court:internal'
+include ':court:api'
+
