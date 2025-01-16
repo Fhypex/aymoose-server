@@ -62,7 +62,7 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://app.aymoose.devodev.online",
-                "https://app.aymoose.devodev.online", "https://aymoose.devodev.online"));
+                "https://sahancepte.com", "https://aymoose.devodev.online"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(Arrays.asList(HttpMethod.GET.name(), HttpMethod.POST.name(),
