@@ -25,8 +25,10 @@ public class UpdateProfilePictureCommandHandler implements CommandHandler<Update
         Account account = accountRepository.findById(command.userId())
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
-
         imageOperationPort.deleteByRelationId(account.id());
+
+        // TODO : Add image validation
+        log.info("Saving image for account {} with image {}", account.id(), command.image().getOriginalFilename());
 
         imageOperationPort.save(account.id(), command.image());
 
