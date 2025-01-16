@@ -28,12 +28,12 @@ public class FacilityEntity {
     private UUID id;
     private UUID userId;
     private String name;
-    @Column(length = 2000)
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String phoneNumber;
     private Long cityId;
     private Long districtId;
-    @Column(length = 500)
+    @Column(columnDefinition = "TEXT")
     private String fullAddress;
     private String location;
     private String contactDetails;
