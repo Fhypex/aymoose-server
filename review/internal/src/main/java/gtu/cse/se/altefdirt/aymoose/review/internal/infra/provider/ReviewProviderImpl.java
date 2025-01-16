@@ -23,9 +23,11 @@ class ReviewProviderImpl implements ReviewProvider {
             return "0";
         }
         List<Rating> ratings = reviews.stream().map(Review::rating).toList();
-        Short leadingAvg = 0;
-        /* ratings.stream().map(rating -> leadingAvg += rating.leading()); */
-        return "0.0";
+        short leadingAvg = 0;
+        for (Rating rating : ratings) {
+            leadingAvg += rating.leading();
+        }
+        return String.valueOf(leadingAvg / ratings.size());
     }
 
     @Override
@@ -35,7 +37,7 @@ class ReviewProviderImpl implements ReviewProvider {
 
     @Override
     public int getReviewCountByFacilityId(AggregateId facilityId) {
-        return 0;
+        return repository.findByFacilityId(facilityId).size();
     }
 
     @Override
