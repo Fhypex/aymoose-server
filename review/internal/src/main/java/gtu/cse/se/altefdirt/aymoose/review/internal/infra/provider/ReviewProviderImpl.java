@@ -27,7 +27,7 @@ class ReviewProviderImpl implements ReviewProvider {
         for (Rating rating : ratings) {
             leadingAvg += rating.leading();
         }
-        return String.valueOf((double) leadingAvg / (double) ratings.size());
+        return String.format("%.1f", (double) leadingAvg / (double) ratings.size());
     }
 
     @Override
