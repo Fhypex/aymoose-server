@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @RegisterHandler
 @RequiredArgsConstructor
 @Slf4j
-public class UpdateProfilePictureCommandHandler implements CommandHandler<UpdateProfilePicture, AggregateId> {
+class UpdateProfilePictureCommandHandler implements CommandHandler<UpdateProfilePicture, AggregateId> {
 
     private final AccountRepository accountRepository;
     private final ImageOperationPort imageOperationPort;

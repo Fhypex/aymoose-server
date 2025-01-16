@@ -1,5 +1,6 @@
 package gtu.cse.se.altefdirt.aymoose.account.internal.application.command.handler;
 
+import gtu.cse.se.altefdirt.aymoose.account.internal.application.command.DeleteProfilePicture;
 import gtu.cse.se.altefdirt.aymoose.account.internal.application.command.UpdateProfilePicture;
 import gtu.cse.se.altefdirt.aymoose.account.internal.application.port.ImageOperationPort;
 import gtu.cse.se.altefdirt.aymoose.account.internal.domain.Account;
@@ -14,17 +15,16 @@ import lombok.extern.slf4j.Slf4j;
 @RegisterHandler
 @RequiredArgsConstructor
 @Slf4j
-public class DeleteProfilePictureCommandHandler implements CommandHandler<UpdateProfilePicture, AggregateId> {
+public class DeleteProfilePictureCommandHandler implements CommandHandler<DeleteProfilePicture, AggregateId> {
 
     private final AccountRepository accountRepository;
     private final ImageOperationPort imageOperationPort;
 
     @Override
-    public AggregateId handle(UpdateProfilePicture command) {
+    public AggregateId handle(DeleteProfilePicture command) {
 
-        Account account = accountRepository.findById(command.userId())
+        Account account = accountRepository.findById(command.id())
                 .orElseThrow(() -> new RuntimeException("Account not found"));
-
 
         imageOperationPort.deleteByRelationId(account.id());
 
