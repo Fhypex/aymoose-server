@@ -5,9 +5,11 @@ import java.util.Set;
 import java.util.UUID;
 
 import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,10 +28,14 @@ public class FacilityEntity {
     private UUID id;
     private UUID userId;
     private String name;
+    @Lob
+    @Column(length = 2000)
     private String description;
     private String phoneNumber;
     private Long cityId;
     private Long districtId;
+    @Lob
+    @Column(length = 500)
     private String fullAddress;
     private String location;
     private String contactDetails;
