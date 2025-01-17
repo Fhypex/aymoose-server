@@ -59,9 +59,10 @@ public class FacilityQueryController {
     }
 
     @GetMapping(value = "/facilities", params = Parameter.USER)
-    public List<FacilityResponseDTO> getFacilityOfOwner() {
+    public List<FacilityResponseDTO> getFacilityOfOwner(@RequestParam(Parameter.USER) UUID userId) {
 
-        List<FacilityView> facilityViews = facilityRepository.findAll().stream().map(facilityService::denormalize)
+        List<FacilityView> facilityViews = facilityRepository.findByUserId(AggregateId.fromUUID(userId)).stream()
+                .map(facilityService::denormalize)
                 .toList();
 
         return facilityViews.stream().map(FacilityResponseDTO::richened).toList();
