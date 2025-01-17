@@ -46,6 +46,11 @@ class FacilityRepositoryImpl implements FacilityRepository {
     }
 
     @Override
+    public List<Facility> findByUserId(AggregateId userId) {
+        return jpaRepository.findByUserId(userId.value()).stream().map(mapper::toDomain).toList();
+    }
+
+    @Override
     public Set<Long> findUniqueDistricts() {
         return jpaRepository.findAll().stream().map(FacilityEntity::getDistrictId)
                 .collect(Collectors.toUnmodifiableSet());

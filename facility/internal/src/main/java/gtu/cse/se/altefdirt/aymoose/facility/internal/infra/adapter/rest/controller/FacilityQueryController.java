@@ -44,12 +44,22 @@ public class FacilityQueryController {
 
     private static final class Parameter {
         private static final String COMPRESSED = "compressed";
+        private static final String USER = "userId";
         private static final String ID = "id";
         private static final String IN_USE = "inUse";
     }
 
     @GetMapping(value = "/facilities")
     public List<FacilityResponseDTO> getFacilities() {
+
+        List<FacilityView> facilityViews = facilityRepository.findAll().stream().map(facilityService::denormalize)
+                .toList();
+
+        return facilityViews.stream().map(FacilityResponseDTO::richened).toList();
+    }
+
+    @GetMapping(value = "/facilities", params = Parameter.USER)
+    public List<FacilityResponseDTO> getFacilityOfOwner() {
 
         List<FacilityView> facilityViews = facilityRepository.findAll().stream().map(facilityService::denormalize)
                 .toList();

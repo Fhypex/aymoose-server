@@ -31,4 +31,7 @@ public interface JpaFacilityRepository extends JpaRepository<FacilityEntity, UUI
 
     @Query("SELECT f FROM FacilityEntity f WHERE :amenityId MEMBER OF f.amenities")
     List<FacilityEntity> findFacilitiesByAmenityId(UUID amenityId);
+
+    @Query("SELECT f FROM FacilityEntity f WHERE f.userId = :userId")
+    List<FacilityEntity> findByUserId(UUID userId);
 }
